@@ -108,6 +108,7 @@ function cyclic_reduction!(x::AbstractMatrix{Float64},
         end
         it += 1
     end
+    @debug it
     if it == max_it
         println("max_it")
         if norm(m1_a0) < cvg_tol

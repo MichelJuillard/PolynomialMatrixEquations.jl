@@ -1,6 +1,5 @@
 using Dynare
-include("../../FastLapackInterface.jl/src/FastLapackInterface.jl")
-include("../src/rendahl.jl")
+using JLD2
 
 context = @dynare "irbc.mod"
 

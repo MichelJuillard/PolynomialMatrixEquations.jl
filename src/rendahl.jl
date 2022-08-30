@@ -46,6 +46,7 @@ function rendahl_solve!(X::Matrix, A::Matrix, B::Matrix, C::Matrix, ws::RendahlW
         iter += 1
         
     end
+    @debug iter
     if iter > maxiter
         XP = maximum(x->abs(x), eigvals(X))
         XS = maximum(x->abs(x), eigvals(ws.S0))
