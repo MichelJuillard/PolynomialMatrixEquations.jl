@@ -53,7 +53,9 @@ C = copy(C0)
 
 wsr = RendahlWs(n)
 X1 = zeros(n, n)
+ENV["JULIA_DEBUG"] = Main
 rendahl_solve!(X1, C, B, A, wsr::RendahlWs, maxiter=1000, tol=1e-6)
+ENV["JULIA_DEBUG"] = ""
 display(X1)
 @show norm(A0*X1*X1 + B0*X1 + C0)
 
@@ -69,4 +71,5 @@ display(X2)
 @show norm(A0*X2*X2 + B0*X2 + C0)
 
 @btime cyclic_reduction!(X2, C, B, A, wsc, 1e-6, 1000)
+
 
