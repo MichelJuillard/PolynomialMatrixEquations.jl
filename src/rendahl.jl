@@ -12,7 +12,7 @@ RendahlWs(n::Int) = RendahlWs(Matrix{Float64}(undef, n, n),
                               LUWs(n))
                               
     
-function rendahl_solve!(X::Matrix, A::Matrix, B::Matrix, C::Matrix, ws::RendahlWs, maxiter=1000, tol=1e-6)
+function rendahl_solve!(X::Matrix, A::Matrix, B::Matrix, C::Matrix, ws::RendahlWs; maxiter=1000, tol=1e-6)
     
     err = one(tol) + tol
     iter = 0
@@ -46,7 +46,9 @@ function rendahl_solve!(X::Matrix, A::Matrix, B::Matrix, C::Matrix, ws::RendahlW
         iter += 1
         
     end
+
     @debug iter
+
     if iter > maxiter
         XP = maximum(x->abs(x), eigvals(X))
         XS = maximum(x->abs(x), eigvals(ws.S0))
